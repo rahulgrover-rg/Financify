@@ -8,7 +8,7 @@ import { InferResponseType } from "hono"
 import { ArrowUpDown } from "lucide-react"
 import { Actions } from "@/app/(dashboard)/accounts/actions"
 
-export type ResponseType = InferResponseType<typeof client.api.categories.$get, 200> ;
+export type ResponseType = InferResponseType<typeof client.api.categories.$get, 200>["data"][0] ;
 
 export const columns: ColumnDef<ResponseType>[] = [
   {
