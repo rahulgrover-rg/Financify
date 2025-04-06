@@ -5,6 +5,18 @@ import * as PopoverPrimitive from "@radix-ui/react-popover"
 
 import { cn } from "@/lib/utils"
 
+function PopoverClose({
+  children,
+  ...props
+}: React.ComponentProps<typeof PopoverPrimitive.Close>) {
+  return (
+    <PopoverPrimitive.Close data-slot="popover-close" {...props}>
+      {children}
+    </PopoverPrimitive.Close>
+  );
+}
+
+
 function Popover({
   ...props
 }: React.ComponentProps<typeof PopoverPrimitive.Root>) {
@@ -45,4 +57,4 @@ function PopoverAnchor({
   return <PopoverPrimitive.Anchor data-slot="popover-anchor" {...props} />
 }
 
-export { Popover, PopoverTrigger, PopoverContent, PopoverAnchor }
+export { Popover, PopoverTrigger, PopoverContent, PopoverAnchor, PopoverClose }
