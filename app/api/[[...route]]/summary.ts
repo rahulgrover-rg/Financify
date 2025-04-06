@@ -139,7 +139,7 @@ const app = new Hono()
                 .select({
                     date: transactions.date,
                     income: sql`COALESCE(SUM(CASE WHEN ${transactions.amount} >= 0 THEN ${transactions.amount} ELSE 0 END), 0)`.mapWith(Number),
-                    expenses: sql`COALESCE(SUM(CASE WHEN ${transactions.amount} < 0 THEN ${transactions.amount} ELSE 0 END), 0)`.mapWith(Number)
+                    expenses: sql`COALESCE(SUM(CASE WHEN ${transactions.amount} < 0 THEN ABS(${transactions.amount}) ELSE 0 END), 0)`.mapWith(Number)
                 })
                 .from(transactions)
                 .innerJoin(
